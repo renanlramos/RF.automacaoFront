@@ -55,3 +55,9 @@ RUN pip install --upgrade pip && \
 
 # Define diretório de trabalho
 WORKDIR /usr/src/app
+
+COPY . /usr/src/app
+
+ENTRYPOINT ["robot"]
+
+CMD ["--outputdir", "results/", "tests/"]
