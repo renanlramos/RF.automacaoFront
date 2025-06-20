@@ -31,3 +31,7 @@ Add and remove products from cart
     When user adds items to his cart
     And check the cart items count
     Then remove all items by clicking on each product remove button
+
+Geolocation test
+    [Tags]    CT004
+    Geolocation Example

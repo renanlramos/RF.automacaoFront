@@ -2,18 +2,22 @@
 Library       SeleniumLibrary
 Library       DatabaseLibrary
 Library       Collections
+Library        ./resources.py
+
 Resource        ./variables.resource
+
 
 *** Keywords ***
 Setup
     Connect To Database    pymysql    db_name=dev   db_user=root    db_password=password1    db_host=localhost   db_port=3306
+    Open Browser    about:black    chrome    options=add_argument("--headless"); add_argument("--no-sandbox"); add_argument("--disable-dev-shm-usage"); add_argument("--window-size=1280,720");
+    #sempre antes de commit incluir add_argument("--headless");
 
 Teardown settings
     Disconnect From Database
 
 Given the user is in login page
-    #sempre antes de commit incluir add_argument("--headless");
-    Open Browser    ${LOGIN URL}    chrome    options= add_argument("--no-sandbox"); add_argument("--disable-dev-shm-usage"); add_argument("--window-size=1280,720");
+    Go To    ${LOGIN URL}
     Title Should Be    Swag Labs
 
 And the user enters valid credentials
@@ -61,3 +65,10 @@ Then remove all items by clicking on each product remove button
     FOR    ${index}    IN RANGE     1    ${qtd + 1}
         Click Element    xpath:(//button[@class="btn btn_secondary btn_small btn_inventory "])
     END
+
+Geolocation Example
+    Set Geolocation    -23.524839    -46.630386    100  
+    Go To    https://webbrowsertools.com/geolocation/
+    Element Should Contain    id:latitude    -23.524839 Degrees
+    Element Should Contain    id:longitude    -46.630386 Degrees
+    
