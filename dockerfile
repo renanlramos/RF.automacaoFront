@@ -51,7 +51,9 @@ RUN pip install --upgrade pip && \
     pip install \
         robotframework \
         robotframework-seleniumlibrary \
-        robotframework-metrics==3.7.0
+        robotframework-metrics==3.7.0 \
+        robotframework-databaselibrary \
+        pymysql
 
 # Define diretório de trabalho
 WORKDIR /usr/src/app
