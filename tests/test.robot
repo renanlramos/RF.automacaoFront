@@ -4,9 +4,7 @@ Library             DatabaseLibrary
 Resource            ../src/keywords.resource
 
 Suite Setup         Setup
-Test Teardown       Close Browser     
 Suite Teardown      Teardown settings
-
 
 *** Test Cases ***
 Valid Login
@@ -28,8 +26,8 @@ Add and remove products from cart
     Given the user is in login page
     And the user enters a valid standard credentials
     And click in login button
-    When user adds items to his cart
-    And check the cart items count
+    When user adds "6" items to his cart
+    And check the cart items count are "6"
     Then remove all items by clicking on each product remove button
 
 Filtering options
@@ -44,9 +42,20 @@ Persisting cart after reload
     Given the user is in login page
     And the user enters a valid standard credentials
     And click in login button
-    When user adds items to his cart
+    When user adds "2" items to his cart
     And reloads the page
     Then the cart must be with the same itens
 
+Finalizing a purchase
+    [Tags]    CT006
+    Given the user is in login page
+    And the user enters a valid standard credentials
+    And click in login button
+    When user adds "2" items to his cart
+    And check the cart items count are "2"
+    And proceeds to checkout and fills personal information
+    Then check total amount, taxes and finalize it
+
 Geolocation test
-    Geolocation Example
+    #Geolocation Chrome Example
+    Geolocation Firefox Example
