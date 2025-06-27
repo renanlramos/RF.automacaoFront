@@ -1,4 +1,6 @@
 /results
+/pabot_results
+.pabotsuitenames
 /src/__pycache__
 log.html
 report.html

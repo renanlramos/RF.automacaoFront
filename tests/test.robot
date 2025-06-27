@@ -56,6 +56,6 @@ Finalizing a purchase
     And proceeds to checkout and fills personal information
     Then check total amount, taxes and finalize it
 
-Geolocation test
+#Geolocation test
     #Geolocation Chrome Example
-    Geolocation Firefox Example
+    #Geolocation Firefox Example

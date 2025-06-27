@@ -9,11 +9,11 @@ Resource        ./variables.resource
 
 *** Keywords ***
 Setup
-    Connect To Database    pymysql    db_name=dev   db_user=root    db_password=password1    db_host=localhost   db_port=3306
+    Connect To Database    pymysql    db_name=dev   db_user=root    db_password=password1    db_host=host.docker.internal   db_port=3306
     
     ${firefox_configs}=    Get Firefox Geolocation Capabilities    -23.5505    -46.6333
     Open Browser    about:blank    headlessfirefox    options=${firefox_configs}
-    #Open Browser    about:blank    chrome    options= add_argument("--disable-popup-blocking");add_argument("--disable-infobars");add_argument("--disable-notifications"); add_argument("--no-sandbox"); add_argument("--disable-dev-shm-usage"); add_argument("--window-size=1280,720");
+    #Open Browser    about:blank    headlesschrome    options= add_argument("--disable-popup-blocking");add_argument("--disable-infobars");add_argument("--disable-notifications"); add_argument("--no-sandbox"); add_argument("--disable-dev-shm-usage"); add_argument("--window-size=1280,720");
 
 Teardown settings
     Close All Browsers
